@@ -1,1 +1,1 @@
-# family-history
+# pedigree
