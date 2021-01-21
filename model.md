@@ -50,7 +50,7 @@ A `Pedigree` is collection of selected information about a family, including the
 ### properties
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
-| type | Concept | required | the type of event |
+| type | string | required | the type of event, may be a known event type |
 | date | Date/Age/Range | optional | the date when the Event is purposed to have happened |
 | value | string | optional | a value associated with the event, which varies depending on the `type` |
 
@@ -61,6 +61,7 @@ A `Pedigree` is collection of selected information about a family, including the
 | death | A person's death | The cause of death as a concept URI (e.g., a NCIT term for the cancer type) |
 | alive | A person is reported to be alive.  | N/A |
 | condition | A condition affecting the person  | A concept URI for the condition (e.g., an HPO term) |
+| diagnosis | A diagnosis received by the person  | A concept URI for the diagnosis (e.g., an OMIM term) |
 
 ## Relationship Terminology
 
@@ -72,10 +73,10 @@ Properties to link instances of the classes are intentionally omitted in order t
 # Supporting formats
 
 ## Concept
+For simplicity, this is just a string URI/CURIE
 
-For simplicity, this is just a string URI or CURIE
-
-## TODO
+# TODO
+- add attribution/provenance for events
 - linking with other terminologies:
   - request that ECO add new term, subclass of ECO_0006151, for family-member assertion (versus self-reported), to distinguish ECO:0006154, in which a patient is giving a statement about themselves, or sibling of ECO_0006153 since it's not self-reported, it's from a family member, for now, can use ECO:0006151 for it
   - request that Biolink add a IndividualOrganismToIndividualOrganismAssociation class
