@@ -61,6 +61,7 @@ This is a reference to a concept in an ontology/terminology/valueset.
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
 | id | string | required | a CURIE associated with the concept (e.g., `HP:0000118`) |
+| label | string | optional | a human-readable label for the concept |
 
 
 ## Relationship Terminology
