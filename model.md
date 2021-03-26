@@ -55,6 +55,9 @@ Properties to link instances of the classes are intentionally omitted in order t
 
 # Supporting formats
 
+## ID
+This is a **string** identifier for internal cross-referencing of individuals between the components of a Pedigree.
+
 ## Concept
 For simplicity, this is just a string URI/CURIE
 
