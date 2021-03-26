@@ -40,7 +40,6 @@ A `Pedigree` is collection of selected information about a family, including the
 ### properties
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
-| id | ID | required | logical id |
 | individual | ID | required | identifier of the subject Individual; equivalent to the FHIR "Scoping Individual" and the Biolink "Subject" |
 | relation | Concept | required | the relationship the `relative` has to the `individual` (e.g., if the `relative` is the `individual`'s parent, then relation would be Parent); terms should come from the relationship terminology, linked below |
 | relative | ID | required | identifier of the relative Individual; equivalent to the FHIR "Player" and the Biolink "Object" |
