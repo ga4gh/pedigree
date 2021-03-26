@@ -18,8 +18,8 @@ A `Pedigree` is collection of selected information about a family, including the
 | --- | --- | --- | --- |
 | proband | ID | optional | id of Individual that is the index case for the family |
 | consultand | ID | optional | id of Individual that is the focus of the current analysis |
-| collectedAt | Date | optional | the date the pedigree was collected, as ISO full or partial date, i.e. YYYY, YYYY-MM, or YYYY-MM-DD |
-| reasonCollected | Concept | optional | the health condition being investigated in the family; if any Individual has the `affected` property defined, it refers to this condition |
+| date | Date | optional | the date the pedigree was collected or last updated, as ISO full or partial date, i.e. YYYY, YYYY-MM, or YYYY-MM-DD |
+| reason | Concept | optional | the reason for pedigree collection, especially a health condition of focus being investigated in the family; if any Individual has the `affected` property defined, it refers to this condition |
 
 ## Individual
 
