@@ -29,7 +29,7 @@ A `Pedigree` is collection of selected information about a family, including the
 | --- | --- | --- | --- |
 | id | ID | required | logical id |
 | name | string | optional | name of the individual |
-| identifiers | list of string | optional | external identifiers for the individual |
+| identifiers | list of Identifier | optional | external identifiers for the individual |
 | sex | Concept | required | Sex assigned at birth, values: `male`, `female`, `other`, `unknown`; See: https://confluence.hl7.org/display/VOC/Gender+Harmony+Context+Definitions and https://www.hl7.org/fhir/valueset-administrative-gender.html |
 | gender | Concept | optional | Presumed or reported gender identity, values: `male`, `female`, `non-binary`, `non-disclosed`, `trans`, ...; See: https://confluence.hl7.org/display/VOC/Gender+Harmony+Context+Definitions |
 | lifeStatus | Concept | recommended | The presumed/accepted life status of the individual as of the pedigree collection date; one of: `alive`, `deceased`, `unborn` |
@@ -46,6 +46,24 @@ A `Pedigree` is collection of selected information about a family, including the
 | relative | ID | required | identifier of the relative Individual; equivalent to the FHIR "Player" and the Biolink "Object" |
 
 
+## Identifier
+This is an identifier for the individual in another system.
+
+### properties
+| Field | Type | Status | Definition |
+| --- | --- | --- | --- |
+| id | string | required | an external identifier such as a medical record number, participant id, or insurance number;  URI/CURIE is preferred |
+
+
+## Concept
+This is a reference to a concept in an ontology/terminology/valueset.
+
+### properties
+| Field | Type | Status | Definition |
+| --- | --- | --- | --- |
+| id | string | required | a CURIE associated with the concept (e.g., `HP:0000118`) |
+
+
 ## Relationship Terminology
 
 See: https://docs.google.com/spreadsheets/d/1V5i-pbOPgg9_F52lYkQpqYbk3u4MIAc9TNw8aglvLL4/edit?usp=sharing
@@ -59,8 +77,6 @@ Properties to link instances of the classes are intentionally omitted in order t
 ## ID
 This is a **string** identifier for internal cross-referencing of individuals between the components of a Pedigree.
 
-## Concept
-For simplicity, this is just a string URI/CURIE
 
 # TODO
 - add Event class for collecting birth, death, conditions, and attribution/provenance for this data
