@@ -6,7 +6,7 @@ Lack of interoperability of pedigree data between systems results in a substanti
 
 # Classes
 
-![image](https://user-images.githubusercontent.com/4251264/105409205-1c53b200-5bfe-11eb-9d77-ed5630138eaf.png)
+<img width="521" alt="image" src="https://user-images.githubusercontent.com/4251264/112600332-6ff1a000-8de7-11eb-9944-62304117ac4a.png">
 
 ## Pedigree
 
