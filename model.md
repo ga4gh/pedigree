@@ -33,7 +33,7 @@ A `Pedigree` is collection of selected information about a family, including the
 | sex | Concept | required | Sex assigned at birth, values: `male`, `female`, `other`, `unknown`; See: https://confluence.hl7.org/display/VOC/Gender+Harmony+Context+Definitions and https://www.hl7.org/fhir/valueset-administrative-gender.html |
 | gender | Concept | optional | Presumed or reported gender identity, values: `male`, `female`, `non-binary`, `non-disclosed`, `trans`, ...; See: https://confluence.hl7.org/display/VOC/Gender+Harmony+Context+Definitions |
 | lifeStatus | Concept | recommended | The presumed/accepted life status of the individual as of the pedigree collection date; one of: `alive`, `deceased`, `unborn` |
-| affected | boolean | not recommended | whether or not the individual is affected by the condition being investigated in this pedigree; included for PED backwards compatibility |
+| affected | boolean | optional | whether or not the individual is affected by the condition being investigated in this pedigree (`Pedigree.reason`) |
 
 ## Relationship
 
