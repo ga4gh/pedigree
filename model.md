@@ -6,11 +6,9 @@ Lack of interoperability of pedigree data between systems results in a substanti
 
 # Classes
 
-<img width="521" alt="image" src="https://user-images.githubusercontent.com/4251264/112600332-6ff1a000-8de7-11eb-9944-62304117ac4a.png">
-
 ## Pedigree
 
-A `Pedigree` is collection of selected information about a family, including the individuals, relationships between them, and relevant health conditions.
+A clinical `Pedigree` is curated selection of information about a family, including the individuals, relationships between them, and relevant health conditions.
 
 ### properties
 
@@ -40,9 +38,9 @@ A `Pedigree` is collection of selected information about a family, including the
 ### properties
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
-| individual | ID | required | identifier of the subject Individual; equivalent to the FHIR "Scoping Individual" and the Biolink "Subject" |
-| relation | Concept | required | the relationship the `relative` has to the `individual` (e.g., if the `relative` is the `individual`'s parent, then relation would be Parent); terms should come from the relationship terminology, linked below |
-| relative | ID | required | identifier of the relative Individual; equivalent to the FHIR "Player" and the Biolink "Object" |
+| subject | ID | required | identifier of the subject Individual; equivalent to the Biolink "Subject" and similar to the FHIR "Player" and |
+| relationship | Concept | required | the relationship the `subject` has to the `relative` (e.g., if the `subject` is the `relative`'s mother, then relation would be `isBiologicalMother`); terms should come from the [KIN terminology](https://github.com/GA4GH-Pedigree-Standard/family_history_terminology) |
+| relative | ID | required | identifier of the relative Individual; equivalent to the Biolink "Object" and similar to the FHIR "Scoping Individual" |
 
 
 ## Identifier
@@ -61,12 +59,8 @@ This is a reference to a concept in an ontology/terminology/valueset.
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
 | id | string | required | a CURIE associated with the concept (e.g., `HP:0000118`) |
-| label | string | optional | a human-readable label for the concept |
+| label | string | optional | a human-readable label for the concept (e.g., `"Phenotypic abnormality"`) |
 
-
-## Relationship Terminology
-
-See: https://docs.google.com/spreadsheets/d/1V5i-pbOPgg9_F52lYkQpqYbk3u4MIAc9TNw8aglvLL4/edit?usp=sharing
 
 ## Implementation guidance
 Properties to link instances of the classes are intentionally omitted in order to make the model agnostic to either a tabular or a hierarchical representation.
