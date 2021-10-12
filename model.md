@@ -37,8 +37,8 @@ A clinical `Pedigree` is curated selection of information about a family, includ
 ### properties
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
-| subject | ID | required | identifier of the subject Individual; equivalent to the Biolink "Subject" and similar to the FHIR "Player" |
-| relationship | Concept | required | the relationship the `subject` has to the `relative` (e.g., if the `subject` is the `relative`'s mother, then relation would be `isBiologicalMother`); terms should come from the [KIN terminology](https://github.com/GA4GH-Pedigree-Standard/family_history_terminology) |
+| individual | ID | required | identifier of the subject Individual; equivalent to the Biolink "Subject" and similar to the FHIR "Player" |
+| relation | Concept | required | the relationship the `individual` has to the `relative` (e.g., if the `individual` is the `relative`'s biological mother, then relation could be `isBiologicalMother [KIN:027]`); terms should come from the [KIN terminology](https://github.com/GA4GH-Pedigree-Standard/family_history_terminology) |
 | relative | ID | required | identifier of the relative Individual; equivalent to the Biolink "Object" and similar to the FHIR "Scoping Individual" |
 
 
