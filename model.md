@@ -50,6 +50,7 @@ This is an identifier for the individual in another system.
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
 | id | string | required | an external identifier such as a medical record number, participant id, or insurance number;  URI/CURIE is preferred |
+| label | string | optional | a human-readable label for the identifier |
 
 
 ## Concept
