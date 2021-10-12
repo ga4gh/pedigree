@@ -14,8 +14,7 @@ A clinical `Pedigree` is curated selection of information about a family, includ
 
 | Field | Type | Status | Definition |
 | --- | --- | --- | --- |
-| proband | ID | optional | id of Individual that is the index case for the family |
-| consultand | ID | optional | id of Individual that is the focus of the current analysis |
+| proband | ID | optional | id of Individual that is the index case for the family, usually the first person referred to genetics or tested for the condition being investigated |
 | date | Date | optional | the date the pedigree was collected or last updated, as ISO full or partial date, i.e. YYYY, YYYY-MM, or YYYY-MM-DD |
 | reason | Concept | optional | the reason for pedigree collection, especially a health condition of focus being investigated in the family; if any Individual has the `affected` property defined, it refers to this condition |
 
