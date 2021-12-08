@@ -15,6 +15,11 @@ Header 2
 --------
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Table of Contents
 
-   page_1
-   page_2
+   introduction
+   pedigree-model
+   classes
+   working-with-model
+   acknowledgements
