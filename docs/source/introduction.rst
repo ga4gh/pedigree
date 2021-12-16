@@ -35,5 +35,20 @@ Recommended Dataset Document
 Requirement Levels
 ======
 
+The Pedigree model uses two requirement levels. 
+
+Required
+########
+
+If a field is required, its presence is  an absolute requirement of the specification, failing which the entire
+model is regarded as malformed. This corresponds to the key words ``MUST``, ``REQUIRED``, and ``SHALL`` in
+`RFC2119 <https://www.ietf.org/rfc/rfc2119.txt>`_.
+
+Optional
+########
+
+A field is truly optional. This category can be applied to fields that are only useful for a certain type of data. For
+instance, the Proband ID and Type field is only required when the pedigree is used to focus on heritable risk for a specific person in the pedigree. For other use cases such as research, a Proband type may be needed.
+
 Brief Explainer of JSON, Protobuf, FHIR...
 ======
