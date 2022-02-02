@@ -40,7 +40,7 @@ A full listing of the use cases that informed development can be `reviewed here 
 * Robustly represent relationships necessary for counseling (e.g., adoption), risk assessment (e.g., infertility, miscarriage, health history), and assisted reproduction (e.g., IVF, MRT).
 
 .. image:: https://user-images.githubusercontent.com/48133386/152238295-c0e29021-ea0b-44b7-aef1-e7520e776ad1.png
-The GA4GH Pedigre Ecosystem
+The GA4GH Pedigree Ecosystem
 
 Recommended Dataset Document
 ======
