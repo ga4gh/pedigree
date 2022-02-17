@@ -71,7 +71,7 @@ instance, the Proband ID and Type field is only required when the pedigree is us
 
 Brief Explainer of Protobuf and HL7 FHIR
 ======
-Depending on how to choose to work with the GA4GH Pedigree model, you may be working with different formats.
+Depending on how you choose to work with the GA4GH Pedigree model, you may be working with different formats.
 
 *If using the Pedigree model in the context of Phenopackets*: Phenopackets schema uses protobuf, an exchange format developed in 2008 by Google. It is recommened to review to the `Wikipedia page on Protobuf <https://en.wikipedia.org/wiki/Protocol_Buffers>`_ and to `Google’s documentation <https://developers.google.com/protocol-buffers/>`_ for details. This page intends to get curious readers who are unfamiliar with protobuf up to speed with the main aspects of this technology, but it is not necessary to understand protobuf to use the phenopacket or pedigree schemas. Learn more about the Phenopackets here, and the Phenopackets implementation of Pedigree here (links to be added).
 
