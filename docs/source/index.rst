@@ -4,8 +4,8 @@ Header 1
 Place introductory descriptions here using **bold** and *italic*.
 Hyperlinks can also be used: `GA4GH <https://www.ga4gh.org/>`_
 
-Link to other pages, :doc:`page_1` and :doc:`page_2`.
-Refer to sepcific sections, :ref:`reference 1` and :ref:`reference 2`.
+Link to other pages, :doc:`introduction` and :doc:`pedigree-model`.
+Refer to specific sections, :ref:`reference 1`.
 
 .. note::
 
@@ -13,6 +13,8 @@ Refer to sepcific sections, :ref:`reference 1` and :ref:`reference 2`.
 
 Header 2
 --------
+
+.. _reference 1:
 
 .. toctree::
    :maxdepth: 2
