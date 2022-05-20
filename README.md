@@ -25,7 +25,7 @@ The GA4GH Pedigree Standard will natively incorporate PED to enable interoperabi
 4. Easy-to-use within the context of other standards such as FHIR or Phenopackets
 5. Simplifies converting a genetic family history from one proband to another
 
-The GA4GH Pedigree Standard is a graph-based model, a directed graph where nodes are the individuals and the arrows or edges represent relationships between pairs of those indiviudals. This is distinct from node information that corresponds to each individual separately. Separating these two things is important for extensibility and building out to more complex families, and for including more data elements than if you had something more indiviual-centric like PED.
+The GA4GH Pedigree Standard is a graph-based model, a directed graph where nodes are the individuals and the arrows or edges represent relationships between pairs of those individuals. This is distinct from node information that corresponds to each individual separately. Separating these two things is important for extensibility and building out to more complex families, and for including more data elements than if you had something more individual-centric like PED.
 
 ## Blue Sky Architechture
 
