@@ -30,6 +30,7 @@ templates_path = ["_templates"]
 # -- Options for HTML output
 
 html_theme = "sphinx_rtd_theme"
+html_logo = 'images/color-logo_no_tag_RBG-170118 (1).jpg'
 
 # -- Options for EPUB output
 epub_show_urls = "footnote"
