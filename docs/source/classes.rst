@@ -37,8 +37,8 @@ The subject of a **Pedigree** is represented by an **Individual** class. This cl
      - 0..1
      - Age of the individual
    * - raceEthnicityAncestry
-     - 0..1
-     - Race, Ethnicity, or Ancestry of the individual
+     - 0..*
+     - Race, Ethnicity, or Ancestry of the individual; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended.
    * - deceased
      - 0..1
      - The presumed/accepted life status of the individual as of the pedigree collection date
