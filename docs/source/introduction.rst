@@ -39,7 +39,8 @@ A full listing of the use cases that informed development can be `reviewed here 
 * Describe multiple phenotypic/diagnostic/genetic features per individual.
 * Robustly represent relationships necessary for counseling (e.g., adoption), risk assessment (e.g., infertility, miscarriage, health history), and assisted reproduction (e.g., IVF, MRT).
 
-.. image:: https://github.com/GA4GH-Pedigree-Standard/pedigree/blob/c963e536591efeb27f77c0057cdcaa4b4993f0dc/docs/source/images/Pedigree%20Ecosystem%20Diagram%20v2.png
+.. figure:: images/pedigree-ecosystem-diagram-v2.png
+   :alt: The GA4GH Pedigree Ecosystem
 The GA4GH Pedigree Ecosystem
 
 The Common Datset for FHH
