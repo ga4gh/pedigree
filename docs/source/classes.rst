@@ -35,7 +35,7 @@ The subject of a **Pedigree** is represented by an **Individual** class. This cl
      - Birth date of the individual, can be just birth year in most cases
    * - age
      - 0..1
-     - Age of the individual
+     - Age of the individual, can be either Age, Estimated Age (or Ontology Class), Age Range, and/or Gestational Age; See also `Phenopackets' TimeElement <https://phenopacket-schema.readthedocs.io/en/latest/time-element.html#rsttimeelement>`_.
    * - raceEthnicityAncestry
      - 0..*
      - Race, Ethnicity, or Ancestry of the individual; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended.
