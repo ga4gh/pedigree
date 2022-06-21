@@ -155,5 +155,6 @@ cython_debug/
 
 # Miscellaneous
 .DS_Store
+.vscode/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks

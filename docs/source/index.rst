@@ -1,20 +1,10 @@
-Header 1
-========
-
-Place introductory descriptions here using **bold** and *italic*.
-Hyperlinks can also be used: `GA4GH <https://www.ga4gh.org/>`_
-
-Link to other pages, :doc:`introduction` and :doc:`pedigree-model`.
-Refer to specific sections, :ref:`reference 1`.
+#######################################################################
+Welcome to the technical documentation for the GA4GH Pedigree Standard!
+#######################################################################
 
 .. note::
 
    This project is under active development.
-
-Header 2
---------
-
-.. _reference 1:
 
 .. toctree::
    :maxdepth: 2
