@@ -19,50 +19,11 @@ Key Concepts
 
 The model defines three core classes:
 
+Pedigree: A collection of information about related individuals and relationships between them.
 
-Individual
-------------
+Individual: A person or entity.
 
-A person or entity.
-
-- Individual id - required
-- Sex at birth - required
-- Gender
-- Name
-- DOB
-- Age / Age Range / Estimated Age / Gestational Age
-- REA - Concept - suggested list of concepts from HANCESTRO
-- Deceased
-- Disease/condition: code, onset, contributed to death
-- Affected: Y/N/?
-  - for backwards-compatibility with PED
-- Other risk-relevant observations
-
-
-Relationship
-------------
-
-A relationship that one individual has with another relative.
-
-- individual - required
-- relationship - required, coded using KIN terms
-- relative - required
-
-
-Pedigree
-------------
-
-A collection of information about related individuals and relationships between them.
-
-- ID - Required
-- Index patients (proband, consultand, first person tested positive for a particular condition/variant)
-  - Individual
-  - Type enum: Proband, Consultand, First Person Tested Positive
-- Completion status
-- Language
-- Narrative
-- Date collected/updated
-
+Relationship: A relationship that one individual has with a related individual.
 
 
 Direction of Relationships
@@ -110,30 +71,43 @@ The precise representation within the context of one of the standards, such as F
 Basic Trio
 ------------
 
-A basic family trio consists of one male parent, one female parent, and a child. This would be represented as a Pedigree with three Individuals and two parent-child Relationships:
+A basic family trio consists of one male parent, one female parent, and a proband child. This would be represented as a Pedigree with three Individuals and two parent-child Relationships:
+
+As a Phenopacket `GA4GHPedigree` message:
 
 .. code-block:: yaml
-
+  id: FAM1
+  narrative: A Phenopacket GA4GHPedigree of a trio with an affected child
+  date: 2022-06-23
   individuals:
-    -
-      id: MOTHER
-      sex: FEMALE
-    -
-      id: FATHER
-      sex: MALE
-    -
-      id: CHILD
-      sex: UNKNOWN
+    - individual:
+        id: MOTHER
+        sex: FEMALE
+      name: My Mother
+      raceEthnicityAncestry:
+        - id: HANCESTRO:0316
+          label: Amish
+    - individual:
+        id: FATHER
+        sex: MALE
+    - individual:
+        id: CHILD
+        sex: UNKNOWN
+      affected: true
   relationships:
-    -
-      individual: MOTHER
-      relationship: isBiologicalMotherOf
+    - individual: MOTHER
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: CHILD
-    -
-      individual: FATHER
-      relationship: isBiologicalFatherOf
+    - individual: FATHER
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: CHILD
-
+  indexPatients:
+    - id: CHILD
+      type: Proband
 
 
 Twins
@@ -143,31 +117,37 @@ The relationship between twins (TWIN1 and TWIN2) can be represented by adding an
 
 .. code-block:: yaml
 
+  id: FAM2
+  narrative: A Phenopacket GA4GHPedigree of a couple with identical twins
+  date: 2022-06-23
   individuals:
-    -
-      id: MOTHER
-      sex: FEMALE
-    -
-      id: FATHER
-      sex: MALE
-    -
-      id: TWIN1
-      sex: UNKNOWN
-    -
-      id: TWIN2
-      sex: UNKNOWN
+    - individual:
+        id: MOTHER
+        sex: FEMALE
+    - individual:
+        id: FATHER
+        sex: MALE
+    - individual:
+        id: TWIN1
+        sex: UNKNOWN
+    - individual:
+        id: TWIN2
+        sex: UNKNOWN
   relationships:
-    -
-      individual: MOTHER
-      relationship: isBiologicalMotherOf
-      relative: CHILD
-    -
-      individual: FATHER
-      relationship: isBiologicalFatherOf
-      relative: CHILD
-    -
-      individual: TWIN1
-      relationship: isMonozygoticTwinOf
+    - individual: MOTHER
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
+      relative: TWIN1
+    - individual: FATHER
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
+      relative: TWIN1
+    - individual: TWIN1
+      relationship: 
+        id: KIN:010
+        label: isMonozygoticMultipleBirthSiblingOf
       relative: TWIN2
 
 
@@ -181,33 +161,39 @@ Adoption
 
 .. code-block:: yaml
 
-  individuals:
-    -
-      id: MOTHER
-      sex: FEMALE
-    -
-      id: BIOLOGICAL_MOTHER
-      sex: FEMALE
-    -
-      id: FATHER
-      sex: MALE
-    -
-      id: CHILD
-      sex: UNKNOWN
-  relationships:
-    -
-      individual: MOTHER
-      relationship: isAdoptiveParentOf
-      relative: CHILD
-    -
-      individual: BIOLOGICAL_MOTHER
-      relationship: isBiologicalMotherOf
-      relative: CHILD
-    -
-      individual: FATHER
-      relationship: isBiologicalFatherOf
-      relative: CHILD
 
+  id: FAM3
+  narrative: A Phenopacket GA4GHPedigree of a child with an adoptive mother
+  date: 2022-06-23
+  individuals:
+    - individual:
+        id: MOTHER
+        sex: FEMALE
+    - individual:
+        id: BIOLOGICAL_MOTHER
+        sex: FEMALE
+    - individual:
+        id: FATHER
+        sex: MALE
+    - individual:
+        id: CHILD
+        sex: UNKNOWN
+  relationships:
+    - individual: MOTHER
+      relationship:
+        id: KIN:022
+        label: isAdoptiveParentOf
+      relative: CHILD
+    - individual: BIOLOGICAL_MOTHER
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
+      relative: CHILD
+    - individual: FATHER
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
+      relative: CHILD
 
 
 IVF
@@ -215,31 +201,37 @@ IVF
 
 .. code-block:: yaml
 
+  id: FAM4
+  narrative: A Phenopacket GA4GHPedigree of a child with an egg donor, gestational carrier, and biological father
+  date: 2022-06-23
   individuals:
-    -
-      id: MOTHER
-      sex: FEMALE
-    -
-      id: SURROGATE
-      sex: FEMALE
-    -
-      id: FATHER
-      sex: MALE
-    -
-      id: CHILD
-      sex: UNKNOWN
+    - individual:
+        id: MOTHER
+        sex: FEMALE
+    - individual:
+        id: SURROGATE
+        sex: FEMALE
+    - individual:
+        id: FATHER
+        sex: MALE
+    - individual:
+        id: CHILD
+        sex: UNKNOWN
   relationships:
-    -
-      individual: MOTHER
-      relationship: isOvumDonorOf
+    - individual: MOTHER
+      relationship:
+        id: KIN:038
+        label: isOvumDonorOf
       relative: CHILD
-    -
-      individual: SURROGATE
-      relationship: isGestationalCarrierOf
+    - individual: SURROGATE
+      relationship:
+        id: KIN:005
+        label: isGestationalCarrierOf
       relative: CHILD
-    -
-      individual: FATHER
-      relationship: isBiologicalFatherOf
+    - individual: FATHER
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: CHILD
 
 
@@ -254,157 +246,202 @@ Complete cancer family
 
 .. code-block:: yaml
 
-  index:
-    -
-      id: 14
-      type: proband
+  id: FAM5
+  narrative: A Phenopacket GA4GHPedigree of a classic BRCA1 pedigree
+  date: 2022-06-23
   individuals:
-    -
-      id: 1
-      sex: MALE
-      deceased: true
-    -
-      id: 2
-      sex: FEMALE
-      deceased: true
-    -
-      id: 3
-      sex: MALE
-      deceased: true
-    -
-      id: 4
-      sex: FEMALE
-      deceased: true
-      attributes:
-        -
-          term: Ovarian cancer
-          ageAtDiagnosis: 49 yrs
-    -
-      id: 5
-      sex: FEMALE
-    -
-      id: 6
-      sex: FEMALE
-    -
-      id: 7
-      sex: MALE
-    -
-      id: 8
-      sex: FEMALE
-      attributes:
-        -
-          term: Breast cancer
-          ageAtDiagnosis: 42 yrs
-    -
-      id: 9
-      sex: MALE
-    -
-      id: 10
-      sex: FEMALE
-    -
-      id: 11
-      sex: FEMALE
-      attributes:
-        -
-          term: Ovarian cancer
-          ageAtDiagnosis: 53 yrs
-    -
-      id: 12
-      sex: FEMALE
-    -
-      id: 13
-      sex: MALE
-    -
-      id: 14
-      sex: FEMALE
-    -
-      id: 15
-      sex: FEMALE
-      attributes:
-        -
-          term: Breast cancer
-          ageAtDiagnosis: 38 yrs
+    - id: 1
+      phenopacket:
+        subject:
+          sex: MALE
+          vital_status: DECEASED
+    - id: 2
+      phenopacket:
+        subject:
+          sex: FEMALE
+          vital_status: DECEASED
+    - id: 3
+      phenopacket:
+        subject:
+          sex: MALE
+          vital_status: DECEASED
+    - id: 4
+      phenopacket:
+        subject:
+          sex: FEMALE
+          vital_status: DECEASED
+          diseases:
+            - term:
+                id: 
+                label: Ovarian cancer
+              onset:
+                age: P49Y
+    - id: 5
+      phenopacket:
+        subject:
+          sex: FEMALE
+    - id: 6
+      phenopacket:
+        subject:
+          sex: FEMALE
+    - id: 7
+      phenopacket:
+        subject:
+          sex: MALE
+    - id: 8
+      phenopacket:
+        subject:
+          sex: FEMALE
+          diseases:
+            - term:
+                id: 
+                label: Breast cancer
+              onset:
+                age: P42Y
+    - id: 9
+      phenopacket:
+        subject:
+          sex: MALE
+    - id: 10
+      phenopacket:
+        subject:
+          sex: FEMALE
+    - id: 11
+      phenopacket:
+        subject:
+          sex: FEMALE
+          diseases:
+            - term:
+                id: 
+                label: Ovarian cancer
+              onset:
+                age: P53Y
+    - id: 12
+      phenopacket:
+        subject:
+          sex: FEMALE
+    - id: 13
+      phenopacket:
+        subject:
+          sex: MALE
+    - id: 14
+      phenopacket:
+        subject:
+          sex: FEMALE
+    - id: 15
+      phenopacket:
+        subject:
+          sex: FEMALE
+          diseases:
+            - term:
+                id: 
+                label: Breast cancer
+              onset:
+                age: P38Y
   relationships:
-    -
-      individual: 1
-      relationship: isBiologicalFatherOf
+    - individual: 1
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 5
-    -
-      individual: 2
-      relationship: isBiologicalMotherOf
+    - individual: 2
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 5
-    -
-      individual: 1
-      relationship: isBiologicalFatherOf
+    - individual: 1
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 6
-    -
-      individual: 2
-      relationship: isBiologicalMotherOf
+    - individual: 2
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 6
-    -
-      individual: 1
-      relationship: isBiologicalFatherOf
+    - individual: 1
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 7
-    -
-      individual: 2
-      relationship: isBiologicalMotherOf
+    - individual: 2
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 7
-    -
-      individual: 3
-      relationship: isBiologicalFatherOf
+    - individual: 3
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 8
-    -
-      individual: 4
-      relationship: isBiologicalMotherOf
+    - individual: 4
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 8
-    -
-      individual: 3
-      relationship: isBiologicalFatherOf
+    - individual: 3
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 9
-    -
-      individual: 4
-      relationship: isBiologicalMotherOf
+    - individual: 4
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 9
-    -
-      individual: 3
-      relationship: isBiologicalFatherOf
+    - individual: 3
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 11
-    -
-      individual: 4
-      relationship: isBiologicalMotherOf
+    - individual: 4
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 11
-    -
-      individual: 3
-      relationship: isBiologicalFatherOf
+    - individual: 3
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 12
-    -
-      individual: 4
-      relationship: isBiologicalMotherOf
+    - individual: 4
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 12
-    -
-      individual: 7
-      relationship: isBiologicalFatherOf
+    - individual: 7
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 13
-    -
-      individual: 8
-      relationship: isBiologicalMotherOf
+    - individual: 8
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 13
-    -
-      individual: 9
-      relationship: isBiologicalFatherOf
+    - individual: 9
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 14
-    -
-      individual: 10
-      relationship: isBiologicalMotherOf
+    - individual: 10
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 14
-    -
-      individual: 7
-      relationship: isBiologicalFatherOf
+    - individual: 7
+      relationship: 
+        id: KIN:028
+        label: isBiologicalFatherOf
       relative: 15
-    -
-      individual: 8
-      relationship: isBiologicalMotherOf
+    - individual: 8
+      relationship:
+        id: KIN:027
+        label: isBiologicalMotherOf
       relative: 15
+  indexPatients:
+    - id: 14
+      type: Proband
 
 
 
