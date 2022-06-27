@@ -93,7 +93,7 @@ The representation of each core data element within each standard is summarized 
 The current list of compatible standards are:
 
 Phenopackets
-  A Phenopacket implementation guide is currently underway. At the moment, an aligned implementation is defined on a branch of the Phenopacket repository: https://github.com/phenopackets/phenopacket-schema/blob/6262c6d4837ffad0bed20ecf80eb1264a80ded57/src/main/proto/pedigree.proto
+  A Phenopacket implementation guide is currently underway. At the moment, an aligned implementation is defined on a branch of the Phenopacket repository: https://github.com/phenopackets/phenopacket-schema/blob/pedigree/src/main/proto/ga4gh/pedigree/v1/pedigree.proto
 
 HL7 FHIR
   The FHIR Implementation Guide is here: https://github.com/GA4GH-Pedigree-Standard/pedigree-fhir-ig
