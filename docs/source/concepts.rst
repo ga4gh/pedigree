@@ -1,16 +1,16 @@
 #######
-Classes
+Concepts
 #######
 
-The diagram below shows an overview of the pedigree classes. Lines between classes indicate composition.
+The diagram below shows an overview of the pedigree concepts. Lines between concepts indicate composition.
 
 .. figure:: images/classes.png
-   :alt: Overview of classes
+   :alt: Overview of concepts
 
 Individual
 ==========
 
-The subject of a **Pedigree** is represented by an **Individual** class. This class intends to represent an individual person or patient who is a member of the pedigree being investigated.  
+The **Individual** concept represents an individual person or patient who is a member of the pedigree being investigated.
 
 .. list-table::
    :header-rows: 1
@@ -36,20 +36,21 @@ The subject of a **Pedigree** is represented by an **Individual** class. This cl
    * - age
      - 0..1
      - Age of the individual, can be either Age, Estimated Age (or Ontology Class), Age Range, and/or Gestational Age; See also `Phenopackets' TimeElement <https://phenopacket-schema.readthedocs.io/en/latest/time-element.html#rsttimeelement>`_.
-   * - raceEthnicityAncestry
+   * - populationDescriptors
      - 0..*
-     - Race, Ethnicity, or Ancestry of the individual; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended.
+     - Information about the individual's ancestry, ethnicity, race, tribe, etc.,; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended, but freetext must be supported
    * - deceased
      - 0..1
      - The presumed/accepted life status of the individual as of the pedigree collection date
    * - affected
      - 0..1
-     - Whether or not the individual is affected by the condition being investigated in this pedigree (``Pedigree.reason``)
+     - Whether or not the individual is affected
+
 
 Relationship
 ============
 
-The *Relationship* class defines the family relations in a pedigree.
+The *Relationship* concept represents the relationship that one individual has to another individual.
 
 .. list-table::
    :header-rows: 1
@@ -67,10 +68,11 @@ The *Relationship* class defines the family relations in a pedigree.
      - 1..1
      - Identifier of the relative ``Individual``; equivalent to the Biolink "object"
 
+
 Pedigree
 ========
 
-A clinical **Pedigree** is curated selection of information about a family, including the individuals, relationships between them, and relevant health conditions.
+A **Pedigree** is a set of individuals and the relationships between them.
 
 .. list-table::
    :header-rows: 1
@@ -90,9 +92,6 @@ A clinical **Pedigree** is curated selection of information about a family, incl
    * - relationships
      - 0..*
      - Collection of ``Relationship`` between the ``individuals`` who are the members of this pedigree
-   * - reason
-     - 0..1
-     - The reason for pedigree collection, a health condition of focus being investigated in the family; if any ``Individual`` has the ``affected`` property defined, it refers to this condition.
    * - status
      - 0..1
      - Status of the pedigree resource collection
