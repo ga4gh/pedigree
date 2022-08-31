@@ -1,60 +1,43 @@
 ################################################
-Working with the Pedigree Model
+Using the Pedigree Model
 ################################################
 
 .. toctree::
    :maxdepth: 1
 
-Kinship Ontology (KIN)
-========================
 
-The Kinship Ontology (KIN) is a family relations ontology developed as part of the Global Alliance for Genomics and Health Pedigree Standard project. It allows using an OWL reasoner to automatically validate a family history graph and infer new relations.
+Compatible standards
+====================
 
-The latest version of the ontology can be found at: http://purl.org/ga4gh/kin.owl.
+The GA4GH Pedigree standard is a conceptual model and recommendations for transferring family history and pedigree data. It is not a standalone data format, but is intended to be implemented by compatible standards to facilitate the transfer and interoperability of this data.
 
-The Ontology is open-source and managed in this GitHub repo: https://github.com/GA4GH-Pedigree-Standard/family_history_terminology
+Compatible standards provide an implementation guide for capturing and representing pedigree data in a manner that is compatible with this model.
 
+The representation of each core concept within each standard is summarized in :doc:`concepts`.
 
-Pedigree Tools
-========================
+The current list of compatible standards are:
 
-Pedigree-tools is a library for supporting the conversion of pedigree data between various file formats.
-
-It can currently support importing from the following formats:
-
-- GA4GH Pedigree
-- PED/Linkage
-- GEDCOM (Cyrillic)
-- BOADICEA
-
-In can currently export into the following formats:
-
-- GA4GH Pedigree
-- PED/Linkage
-
-This tool is available at the following GitHub repository: https://github.com/GA4GH-Pedigree-Standard/pedigree-tools
+* Phenopackets
+* HL7 FHIR
 
 
-Pedigree Validator
-========================
+Phenopackets
+===================
 
-This is a simple command line application that shows how validation of a FHIR pedigree file can be implemented using the HAPI FHIR libraries and the artifacts produced by the FHIR implementation guide.
+`The Phenopackets “Implementation Guide” <https://github.com/phenopackets/phenopacket-schema/blob/pedigree/src/main/proto/ga4gh/pedigree/v1/pedigree.proto>`_ - an implementation of the GA4GH pedigree spec which is partly composed of phenopacket-schema messages. It is not ‘part’ of the Phenopackets spec, but sits in its own org.ga4gh.pedigree namespace.
 
-It also shows how an OWL reasoner can be used to implement additional validation based on the KIN ontology.
+For tools like Exomiser, it is possible to convert to PED format using pedigree-tools and ingest via a Phenopacket.
 
-The application is available at the following GitHub repository: https://github.com/GA4GH-Pedigree-Standard/pedigree-validator
+Phenopackets schema uses protobuf, an exchange format developed in 2008 by Google. It is recommended to review the `Wikipedia page on Protobuf <https://en.wikipedia.org/wiki/Protocol_Buffers>`_ and to `Google’s documentation <https://developers.google.com/protocol-buffers/>`_ for details. This page intends to get curious readers who are unfamiliar with protobuf up to speed with the main aspects of this technology, but it is not necessary to understand protobuf to use the phenopacket or pedigree schemas.
+
+Learn more about the Phenopackets `here <https://phenopacket-schema.readthedocs.io/en/latest/index.html>`_.
 
 
-Example Implementations
-========================
+HL7 FHIR
+=============
 
-The following systems have implemented the GA4GH Pedigree Standard:
+`The Pedigree FHIR Implementation Guide <http://purl.org/ga4gh/pedigree-fhir-ig/index.html>`_.
 
-FHIR implementations:
+Fast Health Interoperability Resources (FHIR) is a loosely defined base model describing things in healthcare (e.g. Patient, Specimen) and how they relate to each other, developed by Health Level 7 (HL7). The FHIR specification is completely technology agnostic. Thus, it does not depend on programming languages or include things like relational database schemas. It is up to the implementers to decide how to implement the data model (i.e. relational database, nosql database, etc) and RESTful API.
 
-- `CSIRO Redcap Pedigree Plugin <https://github.com/aehrc/redcap_pedigree_editor>`_ (Open Source)
-- `Open Pedigree <https://github.com/phenotips/open-pedigree>`_ (Open Source)
-
-Phenopacket implementations:
-
-- In progress...
+To learn more about FHIR, we recommend you check out the following resources: `HL7.org <http://hl7.org/fhir/index.html>`_, `FHIR Basics <https://smilecdr.com/docs/tutorial_and_tour/fhir_basics.html#fhir-basics>`_, and this excellent `FHIR 101 Jupyter Notebook <https://github.com/NIH-NCPI/fhir-101>`_ developed by NIH Cloud-based Platform Interoperability (NCPI) Working Groups.
