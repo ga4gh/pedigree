@@ -43,7 +43,7 @@ Fast Health Interoperability Resources (FHIR) is a loosely defined base model de
 To learn more about FHIR, we recommend you check out the following resources: `HL7.org <http://hl7.org/fhir/index.html>`_, `FHIR Basics <https://smilecdr.com/docs/tutorial_and_tour/fhir_basics.html#fhir-basics>`_, and this excellent `FHIR 101 Jupyter Notebook <https://github.com/NIH-NCPI/fhir-101>`_ developed by NIH Cloud-based Platform Interoperability (NCPI) Working Groups.
 
 
-Pedigree REWS Disclaimer
-========================
+Pedigree Regulatory & Ethics Disclaimer
+=======================================
 
 This model has been designed for use in clinical and research settings. The model may be implemented differently depending on the use cases and setting within which it will be used. While a stand alone regulatory and ethics review has been performed on the model itself, an independent regulatory and ethics review by the implementer may be required depending on the context of use to consider specific issues such as privacy, confidentiality and/or data security and ensure that the model’s implementation and usage is in compliance with applicable legislation and ethical requirements in their jurisdiction. Given that this model is designed to represent family health history data, information which carries potential for personal identification, it is the duty of the implementer to address these risks in the implementation and use of this model. When used in clinical research settings please refer to the Global Alliance for Genomics and Health Policy on `Clinically Actionable Genomic Research Results <https://www.ga4gh.org/wp-content/uploads/GA4GH-Policy-RoR.pdf>`_ for guidance in managing the return of results.
