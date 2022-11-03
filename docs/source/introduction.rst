@@ -1,13 +1,13 @@
-###########################################
+############
 Introduction
-###########################################
+############
 
 .. toctree::
    :maxdepth: 1
 
 
 The GA4GH Pedigree Standard
-======
+===========================
 
 .. _reference 1:
 
@@ -28,7 +28,7 @@ Because the standardization of detailed clinical and genetic data is well-suppor
 
 
 Key terminology
-======
+===============
 
 A **family health history** is the description of the health conditions in a person's family, usually from a single historian (usually the patient or their caregiver). Family health histories are routinely collected as part of health care and typically stored in the patient's medical record.
 
@@ -36,7 +36,7 @@ A **pedigree** is a standardized representation of the individuals, relationship
 
 
 Motivation
-======
+==========
 
 The need for high quality, unambiguous, computable pedigree and family information is critical for scaling genomic analysis to larger, complex families.
 
@@ -50,7 +50,7 @@ A full listing of the use cases that informed development can be `reviewed here 
 
 
 Existing Standards
-======
+==================
 
 
 Pedigree
@@ -60,7 +60,7 @@ The `PED format <https://zzz.bwh.harvard.edu/plink/data.shtml>`_ is a simple tex
 
 
 Family History
-########
+##############
 
 The HL7 `FamilyMemberHistory resource <https://www.hl7.org/fhir/familymemberhistory.html>`_ and `FamilyMemberHistory-genetic profile <https://build.fhir.org/familymemberhistory-genetic.html>`_ allow for capturing a proband's family health history. All data and relationships are relative to that single proband and are in the context of a single patient. This limits its use to representing the family history of a single individual rather than the complete pedigree for a family.
 
@@ -68,7 +68,7 @@ The `HL7 FHIR FamilyMember ValueSet <https://terminology.hl7.org/3.1.0/ValueSet-
 
 
 The Common Dataset for Family Health History
-======
+============================================
 
 The collection and use of family health histories span medical activities from genetic research to heritable risk assessment in patient care. For all the stakeholders in this process, the goal must be data that is accurate and coded for effective analysis, and transferable between systems. To achieve this, a globally accepted and universally implemented family health history (FHH) data set should be established as a benchmark. The purpose of the common dataset document is to create an updated recommended data set that can be used not only in both research and clinical settings, but to eliminate the gap between the two disciplines. This recommendation should also guide the development of research, clinical, and patient-facing FHH data and information collection tools, applications, and data repositories. This document should only be used as informative.
 
@@ -78,7 +78,7 @@ This work was inspired by the efforts of the Personalized Health Care Workgroup 
 
 
 Example Use Cases
-======
+=================
 
 The overarching use case is to enable the exchange of information collected through family health histories and clinical genetics pedigrees across pedigree tools and algorithms that operate on pedigrees and family health histories.
 
@@ -96,7 +96,7 @@ Specific use cases considered in the development of the standard include:
 
 
 Requirement Levels
-======
+==================
 
 The Pedigree model uses two requirement levels. 
 
