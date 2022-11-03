@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information
 
-project = ""
-copyright = ""
-author = ""
+project = "pedigree"
+copyright = "2022"
+author = "GA4GH Clinical and Phenotypic Data Capture Workstream"
 
 release = "0.1"
 version = "0.1.0"
