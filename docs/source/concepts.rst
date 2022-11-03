@@ -24,6 +24,9 @@ The **Individual** concept represents an individual person or patient who is a m
    * - sex
      - 1..1
      - Sex assigned at birth
+   * - karyotypicSex
+     - 0..1
+     - The chromosomal sex of the individual; See Phenopacket `KaryotypicSex <https://phenopacket-schema.readthedocs.io/en/latest/karyotypicsex.html>`_.
    * - gender
      - 0..1
      - Presumed or reported gender identity
