@@ -13,22 +13,114 @@ To support the interoperability of family health history data within and between
 The Pedigree Conceptual Model defines core concepts and their properties, and is based on `A Recommendation for The Common Data Set for Family Health History <https://docs.google.com/document/d/1GQRd5jeZeB5qhHclLZxDe6kPD173bXWGYlTsmCbTeuI/edit>`_.
 
 
-Direction of Relationships
-==========================
 
-A Relationship defines a relationship between one individual and another, such as `isBiologicalMotherOf` or `isTwinOf`. Only one of the two directions needs to be specified, and it does not matter which.
+Concepts
+========
 
-Symmetric relationships are those where both individuals share the same relationship with one another. These include: `isTwinOf` and `isPartnerOf`.
+The diagram below shows an overview of the pedigree concepts. Lines between concepts indicate composition.
 
-Non-symmetric relationships are those where the relationship that individual X has to individual Y is not the same as the relationship that individual Y has to individual X. For example, if individual X has relationship `isBiologicalParentOf` to individual Y, then individual Y has relationship `isBiologicalChildOf` individual X.
+.. figure:: images/classes.png
+   :alt: Overview of concepts
 
-Because of this inherent flexibility in the way that relationships can be described, there is no single representation for a particular pedigree. However, pedigrees can be represented in a **reduced form**, in which implied relationships are excluded. A pedigree in reduced form:
 
-1. Has explicit parent-child relationships between all parents and their offspring, and they are directed downwards, with the parent as the individual and the child as the relative.
-2. Has sibling relationships only when this is not implied by having shared parents, and in the event of multiple siblings, all sibling relationships are defined relative to the same individual
-3. Defines all twin relationships relative to the same individual
-4. Has partnership relationships only when this is not implied by having shared children
-5. Has extended relative relationships only when this is not implied by the previously-defined relationships, and they are directed downwards, with the ancestor as the individual and the descendant as the relative
+Individual
+----------
+
+The **Individual** concept represents an individual person or patient who is a member of the pedigree being investigated.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Multiplicity
+     - Description
+   * - id
+     - 1..1
+     - External identifier for the individual
+   * - sex
+     - 1..1
+     - Sex assigned at birth
+   * - karyotypicSex
+     - 0..1
+     - The chromosomal sex of the individual; See Phenopacket `KaryotypicSex <https://phenopacket-schema.readthedocs.io/en/latest/karyotypicsex.html>`_.
+   * - gender
+     - 0..1
+     - Presumed or reported gender identity
+   * - name
+     - 0..1
+     - Name of the individual
+   * - dateOfBirth
+     - 0..1
+     - Birth date of the individual, can be just birth year in most cases
+   * - age
+     - 0..1
+     - Age of the individual, can be either Age, Estimated Age (or Ontology Class), Age Range, and/or Gestational Age; See also `Phenopackets' TimeElement <https://phenopacket-schema.readthedocs.io/en/latest/time-element.html#rsttimeelement>`_.
+   * - populationDescriptors
+     - 0..*
+     - Information about the individual's ancestry, ethnicity, race, tribe, etc.,; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended, but freetext must be supported
+   * - deceased
+     - 0..1
+     - The presumed/accepted life status of the individual as of the pedigree collection date
+   * - affected
+     - 0..1
+     - Whether or not the individual is affected
+
+
+Relationship
+------------
+
+The *Relationship* concept represents the relationship that one individual has to another individual.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Multiplicity
+     - Description
+   * - individual
+     - 1..1
+     - Identifier of the subject ``Individual``; equivalent to the Biolink "subject"
+   * - relation
+     - 1..1
+     - The relationship the ``individual`` has to the ``relative`` (*e.g.*, if the ``individual`` is the ``relative``'s biological mother, then relation could be ``isBiologicalMotherOf`` ``[KIN:027]``); terms should come from the `KIN Ontology <http://purl.org/ga4gh/kin.owl>`_.
+   * - relative
+     - 1..1
+     - Identifier of the relative ``Individual``; equivalent to the Biolink "object"
+
+
+Pedigree
+--------
+
+A **Pedigree** is a set of individuals and the relationships between them.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Multiplicity
+     - Description
+   * - id
+     - 1..1
+     - External identifier for the family being investigated
+   * - indexPatients
+     - 0..*
+     - Identified ``Individual`` in the family of a health condition of focus being investigated: ``Proband``, ``Consultand``, ``First Person Tested Positive``
+   * - individuals
+     - 0..*
+     - Collection of ``Individual`` who are the members of this pedigree
+   * - relationships
+     - 0..*
+     - Collection of ``Relationship`` between the ``individuals`` who are the members of this pedigree
+   * - status
+     - 0..1
+     - Status of the pedigree resource collection
+   * - narrative
+     - 0..1
+     - Summary of the pedigree resource for human interpretation
+   * - date
+     - 0..1
+     - The date the pedigree was collected or last updated, as ISO full or partial date, *i.e.* ``YYYY``, ``YYYY-MM``, or ``YYYY-MM-DD``
+
 
 
 Examples

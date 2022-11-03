@@ -12,9 +12,8 @@ Welcome to the technical documentation for the GA4GH Pedigree Standard!
 
    introduction
    pedigree-model
-   concepts
-   using-the-pedigree-model
    kin
+   using-the-pedigree-model
    tooling
    implementations
    acknowledgements
