@@ -29,9 +29,9 @@ Because the standardization of detailed clinical and genetic data is well-suppor
 Key terminology
 ======
 
-**Family health histories** are records of the health conditions in a person's family, usually from a single historian (usually the patient or their caregiver). They are routinely collected as part of health care and stored in the patient's medical record.
+A **family health history** is the description of the health conditions in a person's family, usually from a single historian (usually the patient or their caregiver). Family health histories are routinely collected as part of health care and typically stored in the patient's medical record.
 
-**A pedigree** is a standardized representation of the individuals, relationships, and health conditions in a family. This is usually drawn or visualized using standardized symbols (such as circles for women, squares for men, and diamonds for non-binary individuals). This information often comes from the family health histories reported by family members, but is usually curated by the clinical team. In clinical genetics, information from multiple family members is frequently combined to form a single pedigree which is stored in a family record that is separate from any individual's medical record.
+A **pedigree** is a standardized representation of the individuals, relationships, and health conditions in a family. This is usually drawn or visualized using standardized symbols (such as circles for women, squares for men, and diamonds for non-binary individuals). This information often comes from the family health histories reported by family members, but is usually curated by the clinical team. In clinical genetics, information from multiple family members is frequently combined to form a single pedigree which is stored in a family record that is separate from any individual's medical record.
 
 
 Motivation

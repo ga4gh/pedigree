@@ -47,6 +47,7 @@ A basic family trio consists of one male parent, one female parent, and a proban
 As a Phenopacket `GA4GHPedigree` message:
 
 .. code-block:: yaml
+
   id: FAM1
   narrative: A Phenopacket GA4GHPedigree of a trio with an affected child
   date: 2022-06-23
