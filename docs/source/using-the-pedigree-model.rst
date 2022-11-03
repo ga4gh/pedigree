@@ -1,6 +1,6 @@
-########################
-Using the Pedigree Model
-########################
+###########################
+Using the Pedigree Standard
+###########################
 
 .. toctree::
    :maxdepth: 1
@@ -9,7 +9,7 @@ Using the Pedigree Model
 Compatible standards
 ====================
 
-The GA4GH Pedigree standard is a conceptual model and recommendations for transferring family history and pedigree data. It is not a standalone data format, but is intended to be implemented by compatible standards to facilitate the transfer and interoperability of this data.
+The GA4GH Pedigree Standard is a conceptual model and recommendations for transferring family history and pedigree data. It is not a standalone data format, but is intended to be implemented by compatible standards to facilitate the transfer and interoperability of this data.
 
 Compatible standards provide an implementation guide for capturing and representing pedigree data in a manner that is compatible with this model.
 

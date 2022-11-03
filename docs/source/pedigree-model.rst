@@ -1,5 +1,5 @@
 ########################
-Pedigree Model
+Conceptual Model
 ########################
 
 .. toctree::
