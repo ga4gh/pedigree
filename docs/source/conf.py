@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information
 
-project = ""
-copyright = ""
-author = ""
+project = "pedigree"
+copyright = "2022"
+author = "GA4GH Clinical and Phenotypic Data Capture Workstream"
 
 release = "0.1"
 version = "0.1.0"
@@ -34,3 +36,12 @@ html_logo = 'images/GA-logo.png'
 
 # -- Options for EPUB output
 epub_show_urls = "footnote"
+
+# These folders are copied to the documentation's HTML output
+html_static_path = ['_static']
+
+# These paths are either relative to html_static_path
+# or fully qualified paths (eg. https://...)
+html_css_files = [
+    'css/custom.css',
+]
