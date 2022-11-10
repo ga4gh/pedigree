@@ -23,7 +23,7 @@ The primary goal of the GA4GH Pedigree Standard is to support the computable exc
 
 Because the standardization of detailed clinical and genetic data is well-supported by other formats and efforts, the GA4GH Pedigree standard focuses on improving the core representation of individuals and their relationships in the context of a family. Additional clinical and genetic data associated with individuals in the family are expected to be represented in other standards and linked to individuals within the pedigree representation.
 
-.. figure:: images/pedigree-ecosystem-diagram-v2.png
+.. figure:: images/pedigree-ecosystem-diagram-v3.png
    :alt: The GA4GH Pedigree Ecosystem
 
 
