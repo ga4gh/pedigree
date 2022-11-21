@@ -36,7 +36,9 @@ Learn more about the Phenopackets `here <https://phenopacket-schema.readthedocs.
 HL7 FHIR
 --------
 
-`The Pedigree FHIR Implementation Guide <http://purl.org/ga4gh/pedigree-fhir-ig/index.html>`_.
+**Note:** Our FHIR-based Implementation Guide of the GA4GH Pedigree conceptual model is under development. The website linked above states the Guide is a “Local Development Build (v0.1.0)”. As the development proceeds, all artifacts in the GA4GH Pedigree specification will be assigned a `"Maturity Level" <https://build.fhir.org/versions.html#maturity>`_. When completed, this IG will go through the HL7 balloting process to become part of the normative version of the FHIR standard.
+
+`The Pedigree FHIR Implementation Guide <http://purl.org/ga4gh/pedigree-fhir-ig/index.html>`_
 
 Fast Health Interoperability Resources (FHIR) is a loosely defined base model describing things in healthcare (e.g. Patient, Specimen) and how they relate to each other, developed by Health Level 7 (HL7). The FHIR specification is completely technology agnostic. Thus, it does not depend on programming languages or include things like relational database schemas. It is up to the implementers to decide how to implement the data model (i.e. relational database, nosql database, etc) and RESTful API.
 
