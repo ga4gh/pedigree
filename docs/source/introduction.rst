@@ -11,7 +11,7 @@ The GA4GH Pedigree Standard
 
 .. _reference 1:
 
-The GA4GH Pedigree Standard supports the computable exchange of family structure and relationships for family health history and pedigree use cases. It does this by providing a common conceptual model, implementation guides in common standards, and tooling to support the adoption within existing pipelines. Relationships between individuals are codified using the Kinship Ontology to allow for inference, semantic interoperability, and reasoning.
+The GA4GH Pedigree Standard supports the computable exchange of family structure and relationships for family health history and pedigree use cases. It does this by providing a common conceptual model, implementation guides in common standards, and tooling to support the adoption within existing pipelines. Relationships between individuals are codified using the `Kinship Ontology (KIN) <https://github.com/GA4GH-Pedigree-Standard/family_history_terminology>`_ to allow for inference, semantic interoperability, and reasoning.
 
 The primary goal of the GA4GH Pedigree Standard is to support the computable exchange of familial health information between the following healthcare settings:
 
