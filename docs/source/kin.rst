@@ -14,3 +14,5 @@ The Kinship Ontology
 The latest version of the ontology can be found at: http://purl.org/ga4gh/kin.owl.
 
 The Ontology is open-source and managed in this GitHub repo: https://github.com/GA4GH-Pedigree-Standard/family_history_terminology
+
+**Note:** We are working with colleagues to explore migrating KIN to the `Relations Ontology (RO) <https://github.com/oborel/obo-relations>`_. 
