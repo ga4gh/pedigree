@@ -40,17 +40,17 @@ As a Phenopacket `GA4GHPedigree` message:
         id: CHILD
         sex: UNKNOWN
   relationships:
-    - individual_id: MOTHER
+    - individualId: MOTHER
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: CHILD
-    - individual_id: FATHER
+      relativeId: CHILD
+    - individualId: FATHER
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: CHILD
-  index_patients:
+      relativeId: CHILD
+  indexPatients:
     - CHILD
 
 
@@ -82,21 +82,21 @@ The relationship between twins (TWIN1 and TWIN2) can be represented by adding an
         id: TWIN2
         sex: UNKNOWN
   relationships:
-    - individual_id: MOTHER
+    - individualId: MOTHER
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: TWIN1
-    - individual_id: FATHER
+      relativeId: TWIN1
+    - individualId: FATHER
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: TWIN1
-    - individual_id: TWIN1
+      relativeId: TWIN1
+    - individualId: TWIN1
       relation:
         id: KIN:010
         label: isMonozygoticMultipleBirthSiblingOf
-      relative_id: TWIN2
+      relativeId: TWIN2
 
 
 The parent-child relationships for TWIN2 are not strictly necessary.
@@ -131,21 +131,21 @@ Adoption
         id: CHILD
         sex: UNKNOWN
   relationships:
-    - individual_id: MOTHER
+    - individualId: MOTHER
       relation:
         id: KIN:022
         label: isAdoptiveParentOf
-      relative_id: CHILD
-    - individual_id: BIOLOGICAL_MOTHER
+      relativeId: CHILD
+    - individualId: BIOLOGICAL_MOTHER
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: CHILD
-    - individual_id: FATHER
+      relativeId: CHILD
+    - individualId: FATHER
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: CHILD
+      relativeId: CHILD
 
 
 IVF
@@ -174,21 +174,21 @@ IVF
         id: CHILD
         sex: UNKNOWN
   relationships:
-    - individual_id: MOTHER
+    - individualId: MOTHER
       relation:
         id: KIN:038
         label: isOvumDonorOf
-      relative_id: CHILD
-    - individual_id: SURROGATE
+      relativeId: CHILD
+    - individualId: SURROGATE
       relation:
         id: KIN:005
         label: isGestationalCarrierOf
-      relative_id: CHILD
-    - individual_id: FATHER
+      relativeId: CHILD
+    - individualId: FATHER
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: CHILD
+      relativeId: CHILD
 
 
 Complete cancer family
@@ -210,22 +210,22 @@ Complete cancer family
       subject:
         id: 1
         sex: MALE
-        vital_status: DECEASED
+        vitalStatus: DECEASED
     - id: 2
       subject:
         id: 2
         sex: FEMALE
-        vital_status: DECEASED
+        vitalStatus: DECEASED
     - id: 3
       subject:
         id: 3
         sex: MALE
-        vital_status: DECEASED
+        vitalStatus: DECEASED
     - id: 4
       subject:
         id: 4
         sex: FEMALE
-        vital_status: DECEASED
+        vitalStatus: DECEASED
         diseases:
           - term:
               id:
@@ -295,106 +295,106 @@ Complete cancer family
             onset:
               age: P38Y
   relationships:
-    - individual_id: 1
+    - individualId: 1
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 5
-    - individual_id: 2
+      relativeId: 5
+    - individualId: 2
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 5
-    - individual_id: 1
+      relativeId: 5
+    - individualId: 1
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 6
-    - individual_id: 2
+      relativeId: 6
+    - individualId: 2
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 6
-    - individual_id: 1
+      relativeId: 6
+    - individualId: 1
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 7
-    - individual_id: 2
+      relativeId: 7
+    - individualId: 2
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 7
-    - individual_id: 3
+      relativeId: 7
+    - individualId: 3
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 8
-    - individual_id: 4
+      relativeId: 8
+    - individualId: 4
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 8
-    - individual_id: 3
+      relativeId: 8
+    - individualId: 3
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 9
-    - individual_id: 4
+      relativeId: 9
+    - individualId: 4
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 9
-    - individual_id: 3
+      relativeId: 9
+    - individualId: 3
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 11
-    - individual_id: 4
+      relativeId: 11
+    - individualId: 4
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 11
-    - individual_id: 3
+      relativeId: 11
+    - individualId: 3
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 12
-    - individual_id: 4
+      relativeId: 12
+    - individualId: 4
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 12
-    - individual_id: 7
+      relativeId: 12
+    - individualId: 7
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 13
-    - individual_id: 8
+      relativeId: 13
+    - individualId: 8
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 13
-    - individual_id: 9
+      relativeId: 13
+    - individualId: 9
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 14
-    - individual_id: 10
+      relativeId: 14
+    - individualId: 10
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 14
-    - individual_id: 7
+      relativeId: 14
+    - individualId: 7
       relation:
         id: KIN:028
         label: isBiologicalFatherOf
-      relative_id: 15
-    - individual_id: 8
+      relativeId: 15
+    - individualId: 8
       relation:
         id: KIN:027
         label: isBiologicalMotherOf
-      relative_id: 15
-  index_patients:
+      relativeId: 15
+  indexPatients:
     - 14
 
