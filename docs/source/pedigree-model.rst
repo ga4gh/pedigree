@@ -35,8 +35,8 @@ The **Individual** concept represents an individual person or patient who is a m
      - Multiplicity
      - Description
    * - id
-     - 1..1
-     - External identifier for the individual
+     - 1..*
+     - Join to External Identifier for the individual (see below)
    * - sex
      - 1..1
      - Sex assigned at birth
@@ -64,6 +64,26 @@ The **Individual** concept represents an individual person or patient who is a m
    * - affected
      - 0..1
      - Whether or not the individual is affected
+
+The **External_Identifier** concept represents an link to this individual in an external system.  An Individual may have one or more External Identifiers
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Multiplicity
+     - Description
+   * - id
+     - 1..1
+     - Join to the Individual
+   * - external_id
+     - 1..1
+     - External id for the individual
+   * - external_id_system
+     - 1..1
+     - System (URI per (RFC 3986[https://datatracker.ietf.org/doc/html/rfc3986])) in which the unique external_id represents the individual
+   * - system_endpoint
+     - 0..1
+     - System (URL per (RFC 1738[https://datatracker.ietf.org/doc/html/rfc1738])) from which data for this individual may be queried using the external_id, in accordance with access rules and regulations
 
 
 Relationship
