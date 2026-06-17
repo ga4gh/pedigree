@@ -81,7 +81,9 @@ KIN terms are **directional**: they describe a relationship from the subject (``
      - ``isSocialLegalGrandchildOf``
      -
 
-**Why inverses exist:** Inverse terms are included in KIN to support cases where data has been collected from the descendant's perspective (e.g., a patient report of "my grandmother is..."). An OWL reasoner that loads the pedigree will automatically infer the inverse direction from a single assertion, so there is no need to record both. Recording both directions for the same pair is redundant and should be avoided.
+**Why inverses exist:** Inverse terms are included in KIN to support cases where data has been collected from the descendant's perspective — for example, a proband report of "my grandmother is...". In that case, ``isBiologicalGrandchildOf`` is the natural term to use. An OWL reasoner will automatically infer the inverse direction from a single assertion, so there is no need to record both. Recording both directions for the same pair is redundant and should be avoided.
+
+See :doc:`using-the-pedigree-model` for the recommended direction priority (proband-ascending → downward → consistent).
 
 Sibling and partner relationships are **symmetric** (e.g., ``isBiologicalSiblingOf``, ``isPartnerOf``) and have no preferred direction — record them once in either direction.
 
