@@ -1,0 +1,93 @@
+// Individual and ExternalIdentifier messages for the GA4GH Pedigree Standard v1.
+
+syntax = "proto3";
+
+package org.ga4gh.pedigree.v1;
+
+option java_package = "org.ga4gh.pedigree.v1";
+option java_multiple_files = true;
+option go_package = "github.com/ga4gh/pedigree/v1";
+
+import "ga4gh/pedigree/v1/base.proto";
+
+// Sex assigned at birth.
+enum SexAssignedAtBirth {
+  SEX_ASSIGNED_AT_BIRTH_UNSPECIFIED = 0;
+  ASSIGNED_MALE = 1;
+  ASSIGNED_FEMALE = 2;
+  NOT_ASSIGNED_AT_BIRTH = 3;
+}
+
+// Presumed or reported gender identity.
+enum GenderIdentity {
+  GENDER_IDENTITY_UNSPECIFIED = 0;
+  MAN = 1;
+  WOMAN = 2;
+  // Includes gender diverse and gender expansive individuals.
+  NONBINARY_GENDER_DIVERSE = 3;
+  OTHER_GENDER = 4;
+}
+
+// An Individual represents a person who is a member of the pedigree.
+// Detailed clinical and genetic data (e.g., diagnoses, variants) are expected
+// to be represented in linked standards such as Phenopackets or HL7 FHIR and
+// referenced via ExternalIdentifier.
+message Individual {
+  // Required. Pedigree-internal identifier for this individual.
+  string id = 1;
+
+  // Sex assigned at birth.
+  SexAssignedAtBirth sex_assigned_at_birth = 2;
+
+  // Presumed or reported gender identity.
+  GenderIdentity gender_identity = 3;
+
+  // Name of the individual.
+  string name = 4;
+
+  // Birth date of the individual. Partial dates (YYYY or YYYY-MM) are
+  // supported via the timestamp field of TimeElement.
+  TimeElement date_of_birth = 5;
+
+  // Age of the individual. Supports Age, AgeRange, GestationalAge, or
+  // an ontology class (e.g., HPO age-of-onset term).
+  TimeElement age = 6;
+
+  // Ancestry, ethnicity, race, or population descriptors.
+  // Terms from HANCESTRO are recommended; free text is also supported via
+  // OntologyClass.label when a coded term is not available.
+  repeated OntologyClass population_descriptors = 7;
+
+  // Whether the individual is presumed or known to be deceased as of the
+  // pedigree collection date.
+  optional bool deceased = 8;
+
+  // Pedigree-internal ID of the individual who provided the egg
+  // (genetic maternal parent). Should be consistent with the
+  // biological_relationship entries in the Relationship collection.
+  string egg_parent_id = 9;
+
+  // Pedigree-internal ID of the individual who provided the sperm
+  // (genetic paternal parent). Should be consistent with the
+  // biological_relationship entries in the Relationship collection.
+  string sperm_parent_id = 10;
+
+  // Zero or more external identifiers linking this individual to records
+  // in external systems (e.g., EHR patient IDs, Phenopacket IDs).
+  repeated ExternalIdentifier external_identifiers = 11;
+}
+
+// Links an Individual to their identifier in an external system.
+message ExternalIdentifier {
+  // The identifier for the individual within the external system.
+  // Example: a patient MRN, a Phenopacket subject ID.
+  string external_id = 1;
+
+  // The system or namespace that assigns the external identifier.
+  // Example: "https://hl7.org/fhir/R4/", "https://github.com/ga4gh/phenopacket-schema"
+  string external_id_system = 2;
+
+  // The base endpoint URL of the external system where the record can be
+  // retrieved. Example: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/"
+  string external_system_endpoint = 3;
+}

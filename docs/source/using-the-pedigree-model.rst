@@ -49,19 +49,31 @@ To learn more about FHIR, we recommend you check out the following resources: `H
 Direction of Relationships
 ==========================
 
-A Relationship defines a relationship between one individual and another, such as `isBiologicalMotherOf` or `isTwinOf`. Only one of the two directions needs to be specified, and it does not matter which.
+A Relationship defines a relationship between one individual and another, such as ``isBiologicalMotherOf`` or ``isTwinOf``. Only one of the two directions needs to be specified, and it does not matter which.
 
-Symmetric relationships are those where both individuals share the same relationship with one another. These include: `isTwinOf` and `isPartnerOf`.
+Symmetric relationships are those where both individuals share the same relationship with one another. These include twin relationships (``twin_group``) and partner relationships.
 
-Non-symmetric relationships are those where the relationship that individual X has to individual Y is not the same as the relationship that individual Y has to individual X. For example, if individual X has relationship `isBiologicalParentOf` to individual Y, then individual Y has relationship `isBiologicalChildOf` individual X.
+Non-symmetric relationships are those where the relationship that individual X has to individual Y is not the same as the relationship that individual Y has to individual X. For example, if individual X has biological relationship ``isBiologicalParentOf`` to individual Y, then individual Y has biological relationship ``isBiologicalChildOf`` individual X.
 
 Because of this inherent flexibility in the way that relationships can be described, there is no single representation for a particular pedigree. However, pedigrees can be represented in a **reduced form**, in which implied relationships are excluded. A pedigree in reduced form:
 
-1. Has explicit parent-child relationships between all parents and their offspring, and they are directed downwards, with the parent as the individual and the child as the relative.
+1. Has explicit parent-child relationships between all parents and their offspring, and they are directed downwards, with the parent as the ``individual`` and the child as the ``relative``.
 2. Has sibling relationships only when this is not implied by having shared parents, and in the event of multiple siblings, all sibling relationships are defined relative to the same individual
-3. Defines all twin relationships relative to the same individual
+3. Defines all twin relationships (via ``twin_group``) relative to the same individual
 4. Has partnership relationships only when this is not implied by having shared children
-5. Has extended relative relationships only when this is not implied by the previously-defined relationships, and they are directed downwards, with the ancestor as the individual and the descendant as the relative
+5. Has extended relative relationships only when this is not implied by the previously-defined relationships, and they are directed downwards, with the ancestor as the ``individual`` and the descendant as the ``relative``
+
+Biological vs. Social Relationships
+-------------------------------------
+
+The ``Relationship`` concept separates biological and social/legal relationships into distinct fields (``biological_relationship`` and ``social_relationship``), each of which can hold multiple values. This allows the model to simultaneously represent, for example, a gestational carrier and an adoptive parent for the same child without conflating the two relationship types.
+
+The ``egg_parent`` and ``sperm_parent`` fields on ``Individual`` provide a shorthand for the core biological parent-child tree and should be consistent with the ``biological_relationship`` entries in the ``Relationship`` collection.
+
+Consanguinity
+-------------
+
+Consanguinity between any two individuals can be flagged directly on a ``Relationship`` using the ``consanguinity`` field (boolean) and the optional ``consanguinity_note`` for free-text detail. This avoids the need to infer consanguinity from the graph topology alone.
 
 
 

@@ -36,40 +36,72 @@ The **Individual** concept represents an individual person or patient who is a m
      - Description
    * - id
      - 1..1
-     - External identifier for the individual
-   * - sex
-     - 1..1
-     - Sex assigned at birth
-   * - karyotypicSex
+     - Pedigree internal identifier for the individual
+   * - sex_assigned_at_birth
      - 0..1
-     - The chromosomal sex of the individual; See Phenopacket `KaryotypicSex <https://phenopacket-schema.readthedocs.io/en/latest/karyotypicsex.html>`_.
-   * - gender
+     - Sex assigned at birth. Recommended values: ``assigned male``, ``assigned female``, ``not assigned at birth``.
+   * - gender_identity
      - 0..1
-     - Presumed or reported gender identity
+     - Presumed or reported gender identity (if known). Recommended values: ``man``, ``woman``, ``nonbinary/gender diverse/gender expansive``, ``other``.
    * - name
      - 0..1
      - Name of the individual
-   * - dateOfBirth
+   * - date_of_birth
      - 0..1
      - Birth date of the individual, can be just birth year in most cases
    * - age
      - 0..1
      - Age of the individual, can be either Age, Estimated Age (or Ontology Class), Age Range, and/or Gestational Age; See also `Phenopackets' TimeElement <https://phenopacket-schema.readthedocs.io/en/latest/time-element.html#rsttimeelement>`_.
-   * - populationDescriptors
+   * - population_descriptors
      - 0..*
-     - Information about the individual's ancestry, ethnicity, race, tribe, etc.,; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended, but freetext must be supported
+     - Information about the individual's ancestry, ethnicity, race, tribe, etc.; terms from the `Human Ancestry Ontology (HANCESTRO) <https://www.ebi.ac.uk/ols/ontologies/hancestro>`_ are recommended, but freetext must be supported
    * - deceased
      - 0..1
      - The presumed/accepted life status of the individual as of the pedigree collection date
-   * - affected
+   * - egg_parent
      - 0..1
-     - Whether or not the individual is affected
+     - Identifier of the individual who provided the egg (genetic maternal parent); should be consistent with the biological relationship tree
+   * - sperm_parent
+     - 0..1
+     - Identifier of the individual who provided the sperm (genetic paternal parent); should be consistent with the biological relationship tree
+
+.. note::
+
+   **Removed from v0.1:**
+
+   - ``karyotypicSex`` — chromosomal sex is now expected to be represented in linked genotypic data.
+   - ``affected`` — affected status is now expected to be represented in linked phenotypic data (e.g., a Phenopacket).
+
+
+ExternalIdentifier
+------------------
+
+The **ExternalIdentifier** concept links an ``Individual`` to their identifier(s) in one or more external systems (e.g., an EHR or a Phenopacket store). An individual may have zero or more external identifiers.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Multiplicity
+     - Description
+   * - id
+     - *..0
+     - Pedigree internal identifier of the ``Individual`` this record belongs to (foreign key)
+   * - external_id
+     - 1..1
+     - The identifier for the individual within the external system (e.g., a patient MRN or Phenopacket ID)
+   * - external_id_system
+     - 1..1
+     - The system or namespace that assigns the external identifier (e.g., ``https://hl7.org/fhir/R4/``, ``https://github.com/ga4gh/phenopacket-schema``)
+   * - external_system_endpoint
+     - 1..1
+     - The base endpoint URL of the external system where the record can be retrieved (e.g., ``https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/``)
 
 
 Relationship
 ------------
 
-The *Relationship* concept represents the relationship that one individual has to another individual.
+The *Relationship* concept represents the relationship that one individual has to another individual. The single ``relation`` field from v0.1 has been replaced by separate ``biological_relationship`` and ``social_relationship`` fields to allow independent, multi-valued representation of each relationship type.
 
 .. list-table::
    :header-rows: 1
@@ -80,12 +112,30 @@ The *Relationship* concept represents the relationship that one individual has t
    * - individual
      - 1..1
      - Identifier of the subject ``Individual``; equivalent to the Biolink "subject"
-   * - relation
-     - 1..1
-     - The relationship the ``individual`` has to the ``relative`` (*e.g.*, if the ``individual`` is the ``relative``'s biological mother, then relation could be ``isBiologicalMotherOf`` ``[KIN:027]``); terms should come from the `KIN Ontology <http://purl.org/ga4gh/kin.owl>`_.
    * - relative
      - 1..1
      - Identifier of the relative ``Individual``; equivalent to the Biolink "object"
+   * - biological_relationship
+     - 0..*
+     - One or more biological relationships from the KIN biological subset (e.g., ``isBiologicalMotherOf`` [egg + gestation], ``isBiologicalFatherOf`` [sperm], ``isGestationalCarrierOf``, ``isOvumDonorOf``, ``isSpermDonorOf``). Should be consistent with ``egg_parent`` / ``sperm_parent`` fields on ``Individual``.
+   * - social_relationship
+     - 0..*
+     - One or more social/legal relationships from the KIN social subset (e.g., ``isAdoptiveParentOf``, ``isFosterParentOf``, ``isStepParentOf``). See the `KIN Ontology <http://purl.org/ga4gh/kin.owl>`_.
+   * - twin_group
+     - 0..*
+     - Twinning relationship type, if applicable. Recommended values: ``monozygotic``, ``dizygotic``.
+   * - consanguinity
+     - 0..1
+     - Whether a consanguineous relationship exists between the two individuals (``true`` / ``false``)
+   * - consanguinity_note
+     - 0..1
+     - Free-text note providing additional detail about the consanguineous relationship
+
+.. note::
+
+   **Removed from v0.1:**
+
+   - ``relation`` — replaced by the combination of ``biological_relationship`` and ``social_relationship`` to allow separate, multi-valued representation of biological and social/legal relationship types.
 
 
 Pedigree
@@ -102,7 +152,7 @@ A **Pedigree** is a set of individuals and the relationships between them.
    * - id
      - 1..1
      - External identifier for the family being investigated
-   * - indexPatients
+   * - index_patients
      - 0..*
      - Identified ``Individual`` in the family of a health condition of focus being investigated: ``Proband``, ``Consultand``, ``First Person Tested Positive``
    * - individuals
