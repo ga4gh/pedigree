@@ -5,7 +5,7 @@ Acknowledgements
 .. toctree::
    :maxdepth: 1
 
-This standard was developed by Clinical and Phenotpic Data Capture Work Stream of the GA4GH, and is the result of the collaborative work, comments, and input of many individual and organizational contributors. We thank all contributors for their time and expertise.
+This standard was developed by Clinical and Phenotypic Data Capture Work Stream of the GA4GH, and is the result of the collaborative work, comments, and input of many individual and organizational contributors. We thank all contributors for their time and expertise.
 
 Pedigree Standard Contributors (in alphabetical order)
 ======

@@ -24,13 +24,13 @@ The current list of compatible standards are:
 Phenopackets
 ------------
 
-`The Phenopackets “Implementation Guide” <https://github.com/phenopackets/phenopacket-schema/blob/pedigree/src/main/proto/ga4gh/pedigree/v1/pedigree.proto>`_ - an implementation of the GA4GH pedigree spec which is partly composed of phenopacket-schema messages. It is not ‘part’ of the Phenopackets spec, but sits in its own org.ga4gh.pedigree namespace.
+The GA4GH Pedigree Standard v1 defines its own canonical :doc:`proto3 schema <schema>` (``org.ga4gh.pedigree.v1``), which is designed to sit alongside Phenopackets v2. Individuals in a ``Pedigree`` can be linked to their corresponding Phenopacket records via ``ExternalIdentifier``. The ``TimeElement`` and ``OntologyClass`` base types are intentionally compatible with their Phenopackets equivalents.
 
 For tools like Exomiser, it is possible to convert to PED format using pedigree-tools and ingest via a Phenopacket.
 
-Phenopackets schema uses protobuf, an exchange format developed in 2008 by Google. It is recommended to review the `Wikipedia page on Protobuf <https://en.wikipedia.org/wiki/Protocol_Buffers>`_ and to `Google’s documentation <https://developers.google.com/protocol-buffers/>`_ for details. This page intends to get curious readers who are unfamiliar with protobuf up to speed with the main aspects of this technology, but it is not necessary to understand protobuf to use the phenopacket or pedigree schemas.
+The Pedigree proto schema uses protobuf 3, the same exchange format used by Phenopackets. It is recommended to review the `Wikipedia page on Protobuf <https://en.wikipedia.org/wiki/Protocol_Buffers>`_ and `Google’s documentation <https://developers.google.com/protocol-buffers/>`_ for background. See :doc:`schema` for instructions on compiling the schema for your language.
 
-Learn more about the Phenopackets `here <https://phenopacket-schema.readthedocs.io/en/latest/index.html>`_.
+Learn more about Phenopackets `here <https://phenopacket-schema.readthedocs.io/en/latest/index.html>`_.
 
 
 HL7 FHIR
