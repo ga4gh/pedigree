@@ -1,0 +1,64 @@
+// Relationship message for the GA4GH Pedigree Standard v1.
+//
+// The v0.1 single `relation` field (one KIN term) has been replaced by separate
+// `biological_relationship` and `social_relationship` repeated fields, allowing
+// independent multi-valued representation of biological and social/legal
+// relationship types between two individuals.
+
+syntax = "proto3";
+
+package org.ga4gh.pedigree.v1;
+
+option java_package = "org.ga4gh.pedigree.v1";
+option java_multiple_files = true;
+option go_package = "github.com/ga4gh/pedigree/v1";
+
+import "ga4gh/pedigree/v1/base.proto";
+
+// Twinning type for a twin_group entry.
+enum TwinType {
+  TWIN_TYPE_UNSPECIFIED = 0;
+  MONOZYGOTIC = 1;
+  DIZYGOTIC = 2;
+}
+
+// A Relationship represents the relationship(s) that one Individual has to
+// another Individual within a Pedigree.
+//
+// Relationship terms come from the KIN Ontology (http://purl.org/ga4gh/kin.owl).
+// Biological relationships are drawn from the KIN biological subset; social and
+// legal relationships from the KIN social subset.
+//
+// Direction: only one of the two directions needs to be stated. Symmetric
+// relationships (twin_group, partner) can be stated in either direction.
+message Relationship {
+  // Required. Pedigree-internal ID of the subject Individual
+  // (Biolink "subject").
+  string individual = 1;
+
+  // Required. Pedigree-internal ID of the relative Individual
+  // (Biolink "object").
+  string relative = 2;
+
+  // Zero or more biological relationships from the KIN biological subset.
+  // Examples: isBiologicalMotherOf [KIN:027], isBiologicalFatherOf [KIN:028],
+  // isGestationalCarrierOf [KIN:005], isOvumDonorOf [KIN:038],
+  // isSpermDonorOf [KIN:039].
+  // Should be consistent with egg_parent_id / sperm_parent_id on Individual.
+  repeated OntologyClass biological_relationship = 3;
+
+  // Zero or more social or legal relationships from the KIN social subset.
+  // Examples: isAdoptiveParentOf [KIN:022], isFosterParentOf, isStepParentOf.
+  repeated OntologyClass social_relationship = 4;
+
+  // Twinning relationship type(s) between the two individuals.
+  // Values: MONOZYGOTIC, DIZYGOTIC.
+  repeated TwinType twin_group = 5;
+
+  // Whether a consanguineous relationship exists between the two individuals.
+  optional bool consanguinity = 6;
+
+  // Free-text note providing additional detail about the consanguineous
+  // relationship (e.g., "first cousins").
+  string consanguinity_note = 7;
+}

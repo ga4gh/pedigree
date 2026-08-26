@@ -8,8 +8,8 @@ project = "pedigree"
 copyright = "2022"
 author = "GA4GH Clinical and Phenotypic Data Capture Workstream"
 
-release = "0.1"
-version = "0.1.0"
+release = "1.0"
+version = "1.0.0"
 
 # -- General configuration
 

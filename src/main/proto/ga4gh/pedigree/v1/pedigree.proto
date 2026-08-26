@@ -1,0 +1,64 @@
+// Top-level Pedigree message for the GA4GH Pedigree Standard v1.
+//
+// A Pedigree is a collection of Individuals and the Relationships between them.
+// It is the root message for exchange of family health history and pedigree data.
+//
+// Modeled on the phenopacket-schema GA4GHPedigree message:
+// https://github.com/phenopackets/phenopacket-schema/blob/pedigree/src/main/proto/ga4gh/pedigree/v1/pedigree.proto
+
+syntax = "proto3";
+
+package org.ga4gh.pedigree.v1;
+
+option java_package = "org.ga4gh.pedigree.v1";
+option java_multiple_files = true;
+option go_package = "github.com/ga4gh/pedigree/v1";
+
+import "google/protobuf/timestamp.proto";
+import "ga4gh/pedigree/v1/individual.proto";
+import "ga4gh/pedigree/v1/relationship.proto";
+
+// Status of a Pedigree resource collection.
+enum PedigreeStatus {
+  PEDIGREE_STATUS_UNSPECIFIED = 0;
+  // The pedigree is being actively collected or updated.
+  ACTIVE = 1;
+  // The pedigree has been reviewed and is considered complete.
+  COMPLETED = 2;
+  // The pedigree record has been retired or superseded.
+  RETIRED = 3;
+}
+
+// A Pedigree represents the family structure and relationships for a group of
+// individuals. It is the primary exchange unit of the GA4GH Pedigree Standard.
+//
+// Detailed clinical, phenotypic, and genomic data associated with individuals
+// are expected to be carried in linked standards (e.g., Phenopackets, HL7 FHIR)
+// and referenced via Individual.external_identifiers.
+message Pedigree {
+  // Required. External identifier for the family being investigated.
+  // This identifier is assigned by the submitting system.
+  string id = 1;
+
+  // Pedigree-internal IDs of the index patient(s) — the Individual(s) who are
+  // the focus of the clinical or research investigation.
+  // Typical values: Proband, Consultand, First Person Tested Positive.
+  repeated string index_patients = 2;
+
+  // All Individuals who are members of this pedigree.
+  repeated Individual individuals = 3;
+
+  // All Relationships between the individuals in this pedigree.
+  repeated Relationship relationships = 4;
+
+  // Status of the pedigree resource collection.
+  PedigreeStatus status = 5;
+
+  // Free-text summary of the pedigree for human interpretation.
+  string narrative = 6;
+
+  // The date the pedigree was collected or last updated.
+  // Partial dates (YYYY or YYYY-MM) should be expressed as a string in the
+  // narrative field; use this field for full ISO 8601 timestamps.
+  google.protobuf.Timestamp date = 7;
+}

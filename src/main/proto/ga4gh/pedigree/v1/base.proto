@@ -1,0 +1,51 @@
+// Shared base types for the GA4GH Pedigree Standard v1.
+//
+// Modeled on the phenopacket-schema base types:
+// https://github.com/ga4gh/phenopacket-schema/tree/master/src/main/proto/phenopackets/schema/v2
+
+syntax = "proto3";
+
+package org.ga4gh.pedigree.v1;
+
+option java_package = "org.ga4gh.pedigree.v1";
+option java_multiple_files = true;
+option go_package = "github.com/ga4gh/pedigree/v1";
+
+// A representation of a term in an ontology or vocabulary.
+message OntologyClass {
+  // A CURIE identifier (e.g., "KIN:027").
+  string id = 1;
+  // Human-readable label for the term (e.g., "isBiologicalMotherOf").
+  string label = 2;
+}
+
+// An age expressed in ISO 8601 duration format (e.g., "P30Y2M" for 30 years and 2 months).
+message Age {
+  string iso8601duration = 1;
+}
+
+// An inclusive age range.
+message AgeRange {
+  Age start = 1;
+  Age end = 2;
+}
+
+// A gestational age expressed in completed weeks (and optional days).
+message GestationalAge {
+  int32 weeks = 1;
+  int32 days = 2;
+}
+
+// A flexible time element mirroring Phenopackets' TimeElement to allow
+// pedigree age fields to interoperate with phenopacket data.
+// Exactly one of the fields should be set.
+message TimeElement {
+  oneof element {
+    // An ISO 8601 timestamp or partial date (YYYY, YYYY-MM, or YYYY-MM-DD).
+    string timestamp = 1;
+    Age age = 2;
+    AgeRange age_range = 3;
+    GestationalAge gestational_age = 4;
+    OntologyClass ontology_class = 5;
+  }
+}
