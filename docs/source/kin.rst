@@ -47,23 +47,25 @@ For the full list of KIN terms and their definitions, see the `KIN ontology docu
 Preferred Term Direction
 =========================
 
-KIN terms are **directional**: they describe a relationship from the subject (``individual``) to the object (``relative``). KIN includes both a term and its logical inverse for many relationships (e.g., ``isBiologicalParentOf`` and ``isBiologicalChildOf``). Both directions are semantically valid, but **implementors should prefer the downward direction** (ancestor → descendant) for consistency with the pedigree's :doc:`reduced form <using-the-pedigree-model>` and to avoid redundant assertions.
+KIN terms are **directional**: they describe a relationship from the subject (``individual``) to the object (``relative``). KIN includes both a term and its logical inverse for many relationships (e.g., ``isBiologicalParentOf`` and ``isBiologicalChildOf``). Both directions are semantically valid. Follow the direction priority in :doc:`using-the-pedigree-model` (proband-ascending preferred, then downward/ancestor, then consistent within the pedigree) to choose which direction to assert.
+
+The table below lists each asymmetric term alongside its KIN inverse. The "forward" column shows the downward/ancestor direction; the "inverse" column shows the term to use when recording from the descendant's perspective (e.g., a proband-ascending assertion).
 
 .. list-table::
    :header-rows: 1
    :widths: 40 40 20
 
-   * - Preferred (downward)
-     - Inverse (avoid unless needed)
+   * - Forward (downward / ancestor)
+     - Inverse (use proband-ascending or when needed)
      - Notes
    * - ``isBiologicalParentOf``
      - ``isBiologicalChildOf``
      -
    * - ``isBiologicalMotherOf``
-     - *(no preferred inverse)*
+     - *(no dedicated inverse)*
      -
    * - ``isBiologicalFatherOf``
-     - *(no preferred inverse)*
+     - *(no dedicated inverse)*
      -
    * - ``isBiologicalGrandparentOf``
      - ``isBiologicalGrandchildOf``
@@ -75,10 +77,22 @@ KIN terms are **directional**: they describe a relationship from the subject (``
      - ``isBiologicalNiblingOf``
      -
    * - ``isAdoptiveParentOf``
-     - *(no dedicated inverse)*
-     - Inverse via KIN:019 hierarchy
+     - ``isAdoptedChildOf``
+     -
+   * - ``isFosterParentOf``
+     - ``isFosterChildOf``
+     -
+   * - ``isStepParentOf``
+     - ``isStepChildOf``
+     -
+   * - ``isSocialLegalParentalSiblingOf``
+     - ``isSocialLegalNiblingOf``
+     -
    * - ``isSocialLegalGrandparentOf``
      - ``isSocialLegalGrandchildOf``
+     -
+   * - ``isSocialLegalGreatGrandparentOf``
+     - ``isSocialLegalGreatGrandchildOf``
      -
 
 **Why inverses exist:** Inverse terms are included in KIN to support cases where data has been collected from the descendant's perspective — for example, a proband report of "my grandmother is...". In that case, ``isBiologicalGrandchildOf`` is the natural term to use. An OWL reasoner will automatically infer the inverse direction from a single assertion, so there is no need to record both. Recording both directions for the same pair is redundant and should be avoided.
